@@ -14,4 +14,7 @@ const randomUserIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 export class UserComponent {
   //Esto es como una prop y puede ser publica o privada, si es privada solo se usa en la clase
   selectedUser = DUMMY_USERS[randomUserIndex];
+  get getUserImage() {
+    return 'assets/users/' + this.selectedUser.avatar;
+  }
 }
