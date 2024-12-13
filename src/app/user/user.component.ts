@@ -17,4 +17,7 @@ export class UserComponent {
   get getUserImage() {
     return 'assets/users/' + this.selectedUser.avatar;
   }
+  onSelectUser() {
+    console.log('Hola');
+  }
 }
