@@ -1,7 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
-import { DUMMY_USERS } from '../dummy-users';
-
-const randomUserIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+import { Component, Input } from '@angular/core';
 
 //Esto es el decorador e indica como se construye el component
 @Component({
@@ -12,16 +9,13 @@ const randomUserIndex = Math.floor(Math.random() * DUMMY_USERS.length);
   styleUrl: './user.component.css',
 })
 export class UserComponent {
-  //Esto es como una prop y puede ser publica o privada, si es privada solo se usa en la clase
-  selectedUser = signal(DUMMY_USERS[randomUserIndex]);
-  imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar);
-  /*get getUserImage() {
-    return 'assets/users/' + this.selectedUser.avatar;
-  }*/
+  //El input es para indicar que viene un dato de fuera, el ! despues del avatar es para indicar que si va a haber algo
+  @Input() avatar!: string;
+  @Input() name!: string;
 
-  //Esta es la función que se ejecuta en el onLCic
-  onSelectUser() {
-    const randomUserIndex = Math.floor(Math.random() * DUMMY_USERS.length);
-    this.selectedUser.set(DUMMY_USERS[randomUserIndex]);
+  get getImagePath() {
+    return `assets/users/${this.avatar}`;
   }
+  //Esta es la función que se ejecuta en el onLCic
+  onSelectUser() {}
 }
