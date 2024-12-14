@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 
 const randomUserIndex = Math.floor(Math.random() * DUMMY_USERS.length);
@@ -13,11 +13,15 @@ const randomUserIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 })
 export class UserComponent {
   //Esto es como una prop y puede ser publica o privada, si es privada solo se usa en la clase
-  selectedUser = DUMMY_USERS[randomUserIndex];
-  get getUserImage() {
+  selectedUser = signal(DUMMY_USERS[randomUserIndex]);
+  imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar);
+  /*get getUserImage() {
     return 'assets/users/' + this.selectedUser.avatar;
-  }
+  }*/
+
+  //Esta es la función que se ejecuta en el onLCic
   onSelectUser() {
-    console.log('Hola');
+    const randomUserIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+    this.selectedUser.set(DUMMY_USERS[randomUserIndex]);
   }
 }
