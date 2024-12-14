@@ -10,8 +10,9 @@ import { Component, Input } from '@angular/core';
 })
 export class UserComponent {
   //El input es para indicar que viene un dato de fuera, el ! despues del avatar es para indicar que si va a haber algo
-  @Input() avatar!: string;
-  @Input() name!: string;
+  //Con lo del required true ya no le mentis a typescipt porque directamente tiene que recibir algo
+  @Input({ required: true }) avatar!: string;
+  @Input({ required: true }) name!: string;
 
   get getImagePath() {
     return `assets/users/${this.avatar}`;
