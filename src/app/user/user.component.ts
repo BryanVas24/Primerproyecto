@@ -16,8 +16,9 @@ export class UserComponent {
   @Input({ required: true }) name!: string;
 
   //El output sirve para pasar info de un hijo a un padre
-  //@Output() select = new EventEmitter();
-  select = output<string>();
+  @Output() select = new EventEmitter<string>();
+  //Esta es otra manera de usar output
+  //select = output<string>();
   get getImagePath() {
     return `assets/users/${this.avatar}`;
   }
