@@ -11,19 +11,21 @@ import { Component, EventEmitter, Input, output, Output } from '@angular/core';
 export class UserComponent {
   //El input es para indicar que viene un dato de fuera, el ! despues del avatar es para indicar que si va a haber algo
   //Con lo del required true ya no le mentis a typescipt porque directamente tiene que recibir algo
-  @Input({ required: true }) id!: string;
-  @Input({ required: true }) avatar!: string;
-  @Input({ required: true }) name!: string;
+  @Input({ required: true }) user!: {
+    id: string;
+    name: string;
+    avatar: string;
+  };
 
   //El output sirve para pasar info de un hijo a un padre
   @Output() select = new EventEmitter<string>();
   //Esta es otra manera de usar output
   //select = output<string>();
   get getImagePath() {
-    return `assets/users/${this.avatar}`;
+    return `assets/users/${this.user.avatar}`;
   }
   //Esta es la función que se ejecuta en el onLCic
   onSelectUser() {
-    this.select.emit(this.id);
+    this.select.emit(this.user.id);
   }
 }
