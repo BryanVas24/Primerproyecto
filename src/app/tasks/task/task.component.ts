@@ -1,12 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { taskInfo } from './task.model';
 
-type taskInfo = {
-  id: string;
-  userId: string;
-  title: string;
-  summary: string;
-  dueDate: string;
-};
 @Component({
   selector: 'app-task',
   standalone: true,
