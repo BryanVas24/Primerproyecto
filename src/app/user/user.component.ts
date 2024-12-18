@@ -13,7 +13,7 @@ export class UserComponent {
   //El input es para indicar que viene un dato de fuera, el ! despues del avatar es para indicar que si va a haber algo
   //Con lo del required true ya no le mentis a typescipt porque directamente tiene que recibir algo
   @Input({ required: true }) user!: User;
-
+  @Input({ required: true }) selected!: boolean;
   //El output sirve para pasar info de un hijo a un padre
   @Output() select = new EventEmitter<string>();
   //Esta es otra manera de usar output
