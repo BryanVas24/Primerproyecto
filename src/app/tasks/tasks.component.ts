@@ -55,7 +55,7 @@ export class TasksComponent {
     this.tasks = this.tasks.filter((task) => task.id !== id);
   }
 
-  onStartAddTask() {
-    this.isAddingTask = true;
+  openOrCloseAddTask() {
+    this.isAddingTask = !this.isAddingTask;
   }
 }
