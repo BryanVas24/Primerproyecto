@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, output, Output } from '@angular/core';
 import { User } from './user.model';
+import { CardComponent } from '../shared/card/card.component';
 
 //Esto es el decorador e indica como se construye el component
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [],
+  imports: [CardComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })
