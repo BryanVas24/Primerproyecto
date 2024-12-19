@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { TaskFormData } from './new-task.model';
 
 @Component({
   selector: 'app-new-task',
@@ -10,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class NewTaskComponent {
   @Output() closeModal = new EventEmitter<void>();
+  @Output() add = new EventEmitter<TaskFormData>();
   closeModalbtn() {
     this.closeModal.emit();
   }
@@ -19,16 +21,10 @@ export class NewTaskComponent {
   dueDate = '';
 
   onSubmit() {
-    console.log('Task submitted:', {
+    this.add.emit({
       title: this.title,
       summary: this.summary,
       dueDate: this.dueDate,
     });
-    // Resetear los valores del formulario
-    this.title = '';
-    this.summary = '';
-    this.dueDate = '';
-    // Cerrar el modal
-    this.closeModal.emit();
   }
 }
