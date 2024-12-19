@@ -17,4 +17,18 @@ export class NewTaskComponent {
   title = '';
   summary = '';
   dueDate = '';
+
+  onSubmit() {
+    console.log('Task submitted:', {
+      title: this.title,
+      summary: this.summary,
+      dueDate: this.dueDate,
+    });
+    // Resetear los valores del formulario
+    this.title = '';
+    this.summary = '';
+    this.dueDate = '';
+    // Cerrar el modal
+    this.closeModal.emit();
+  }
 }
